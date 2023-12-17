@@ -18,8 +18,5 @@ public:
 
 	//ŠJ•ú
 	void Release() override;
-
-private:
-	void DebugMove();
 };
 

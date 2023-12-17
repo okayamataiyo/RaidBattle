@@ -1,6 +1,6 @@
 #include "Player.h"
 #include "Engine/Model.h"
-#include "Engine/ImGui/imgui.h"
+
 
 Player::Player(GameObject* parent)
 	:GameObject(parent,"Player"),hModel_(-1)
@@ -29,16 +29,4 @@ void Player::Draw()
 
 void Player::Release()
 {
-}
-
-void Player::DebugMove()
-{
-	//ImGui::ÉvÉåÉCÉÑÅ[ÇÃà⁄ìÆ
-	ImGui::Begin("Player"); {
-		if (ImGui::CollapsingHeader("position_")) {
-			ImGui::SliderFloat("position_x", &transform_.position_.x, -10.0f, 10.0f);
-			ImGui::SliderFloat("position_y", &transform_.position_.y, -10.0f, 10.0f);
-			ImGui::SliderFloat("position_z", &transform_.position_.z, -10.0f, 10.0f);
-		}
-	}ImGui::End();
 }
