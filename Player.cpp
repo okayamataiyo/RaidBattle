@@ -16,6 +16,24 @@ void Player::Initialize()
 
 void Player::Update()
 {
+	//座標の確認用移動処理：ImGui
+	DebugMove();
+}
+
+void Player::Draw()
+{
+	//モデルの描画
+	Model::SetTransform(hModel_, transform_);
+	Model::Draw(hModel_);
+}
+
+void Player::Release()
+{
+}
+
+void Player::DebugMove()
+{
+	//ImGui::プレイヤーの移動
 	ImGui::Begin("Player"); {
 		if (ImGui::CollapsingHeader("position_")) {
 			ImGui::SliderFloat("position_x", &transform_.position_.x, -10.0f, 10.0f);
@@ -23,14 +41,4 @@ void Player::Update()
 			ImGui::SliderFloat("position_z", &transform_.position_.z, -10.0f, 10.0f);
 		}
 	}ImGui::End();
-}
-
-void Player::Draw()
-{
-	Model::SetTransform(hModel_, transform_);
-	Model::Draw(hModel_);
-}
-
-void Player::Release()
-{
 }
