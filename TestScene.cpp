@@ -17,6 +17,7 @@ void TestScene::Initialize()
 //XV
 void TestScene::Update()
 {
+	
 }
 
 //•`‰æ

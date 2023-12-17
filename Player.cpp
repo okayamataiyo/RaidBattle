@@ -16,7 +16,6 @@ void Player::Initialize()
 
 void Player::Update()
 {
-	//座標の確認用移動処理：ImGui
 	DebugMove();
 }
 
