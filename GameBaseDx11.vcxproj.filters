@@ -24,6 +24,15 @@
       <UniqueIdentifier>{47a6a3f5-8cfd-436b-8d58-beccd108f3f3}</UniqueIdentifier>
       <Extensions>hlsl</Extensions>
     </Filter>
+    <Filter Include="Player">
+      <UniqueIdentifier>{41498e15-4853-4816-8992-89a54c9cbf41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Player\Job">
+      <UniqueIdentifier>{3e48a67e-e244-421f-8f5b-9ae8aa00449a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Player\Card">
+      <UniqueIdentifier>{81dc3d0a-bc44-42ba-b84c-29f94a3aca14}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\BoxCollider.cpp">
@@ -96,6 +105,15 @@
     <ClCompile Include="Engine\VFX.cpp">
       <Filter>01Engine\ResourceManager</Filter>
     </ClCompile>
+    <ClCompile Include="Player\Player.cpp">
+      <Filter>Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Player\Job\Job.cpp">
+      <Filter>Player\Job</Filter>
+    </ClCompile>
+    <ClCompile Include="Player\Card\Card.cpp">
+      <Filter>Player\Card</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -167,6 +185,15 @@
     </ClInclude>
     <ClInclude Include="Engine\VFX.h">
       <Filter>01Engine\ResourceManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Player\Player.h">
+      <Filter>Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Player\Job\Job.h">
+      <Filter>Player\Job</Filter>
+    </ClInclude>
+    <ClInclude Include="Player\Card\Card.h">
+      <Filter>Player\Card</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
