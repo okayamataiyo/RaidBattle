@@ -9,6 +9,7 @@ TestScene::TestScene(GameObject * parent)
 //‰Šú‰»
 void TestScene::Initialize()
 {
+	int a = 0;
 }
 
 //XV
