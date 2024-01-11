@@ -5,6 +5,18 @@
 #include <vector>
 #include <list>
 
+struct Status {
+
+    char playerName[64];
+    int x;
+    int y;
+    int hp;
+    float speed;
+    bool isDead;
+
+};
+
+
 //プレイヤーを管理するクラス
 class Player : public GameObject
 {
@@ -29,8 +41,6 @@ public:
     //開放
     void Release() override;
 
-
-
     ////////メンバ関数//////////////////////////
 
     //カードを選択する
@@ -38,15 +48,18 @@ public:
 
     void SendAttack();
 
+    void HitDamage(int damage);
 
-    ///////////////セッターゲッター////////////
+    bool isDead() { return status_.isDead; }
 
-    int GetHp() { return hp_; }
+    ///////////////アクセス関数////////////
 
-    void SetPlayerJob(Job* _job) { pJob_ = _job; }
+    Status GetStatus() { return status_; }
+    int GetHp() { return status_.hp; }
+    void SetHp(int hp) { status_.hp = hp; }
+    void SetPos(int x, int y) { status_.x = x; status_.y = y; }
 
-    Job GetPlayerJob() { return pJob_; }
-
+    //////////
     
 
 private:
@@ -54,13 +67,13 @@ private:
     int hModel_;
 
     Job* pJob_;
-    int hp_;
-    float speed_;
+    
+    Status status_;
 
     //選択したカード
-    Card selectedCard_;
+    Card* selectedCard_;
 
     //カード一覧を入れておく？
-    std::list<Card> cardList_;
+    std::list<Card*> cardList_;
 
 };

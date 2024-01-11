@@ -1,26 +1,35 @@
 #pragma once
 #include "../../Engine/GameObject.h"
 
-//◆◆◆を管理するクラス
-class Card : public GameObject
+struct CardStatus {
+    
+};
+
+class Texture;
+
+/// <summary>
+/// プレイヤーが使うカードを管理するクラス
+/// </summary>
+class Card
 {
+private:
+
 
 public:
     //コンストラクタ
-    Card(GameObject* parent);
+    Card(std::string name,int power, std::string texturePath);
 
     //デストラクタ
     ~Card();
 
     //初期化
-    void Initialize() override;
+    void Initialize();
 
-    //更新
-    void Update() override;
+private:
 
-    //描画
-    void Draw() override;
+    char cardName_[64];
+    int attackPower_;
+    Texture* texture_;
 
-    //開放
-    void Release() override;
+
 };
