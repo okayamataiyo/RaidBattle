@@ -8,11 +8,11 @@ struct CardStatus {
 class Texture;
 
 /// <summary>
-/// プレイヤーが使うカードを管理するクラス
+/// プレイヤーが使うカードを管理する基底クラス
 /// </summary>
 class Card
 {
-private:
+protected:
 
 
 public:

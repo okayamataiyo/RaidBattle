@@ -16,8 +16,9 @@ struct Status {
 
 };
 
-
-//プレイヤーを管理するクラス
+/// <summary>
+/// プレイヤーを管理するクラス
+/// </summary>
 class Player : public GameObject
 {
 
@@ -28,7 +29,7 @@ public:
     //デストラクタ
     ~Player();
 
-    /////////////オーバーライド関数//////////////
+    /////////////オーバーライドした関数//////////////
     //初期化
     void Initialize() override;
 
@@ -43,13 +44,26 @@ public:
 
     ////////メンバ関数//////////////////////////
 
-    //カードを選択する
+    /// <summary>
+    /// カードを選択する
+    /// </summary>
     void SelectCard();
 
+    /// <summary>
+    /// 攻撃をする
+    /// </summary>
     void SendAttack();
 
+    /// <summary>
+    /// ダメージを受けた
+    /// </summary>
+    /// <param name="damage">受けたダメージ量</param>
     void HitDamage(int damage);
 
+    /// <summary>
+    /// 死んでいるかどうか
+    /// </summary>
+    /// <returns></returns>
     bool isDead() { return status_.isDead; }
 
     ///////////////アクセス関数////////////

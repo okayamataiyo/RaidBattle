@@ -1,7 +1,9 @@
 #pragma once
 #include "../../Engine/GameObject.h"
 
-//職業を管理するクラス
+/// <summary>
+/// 職業を管理するクラス
+/// </summary>
 class Job : public GameObject
 {
 
