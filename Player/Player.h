@@ -78,10 +78,12 @@ public:
 
 private:
 
-    int hModel_;
+    int hPlayerModel_;
 
+    //ジョブ
     Job* pJob_;
     
+    //プレイヤーのステータス
     Status status_;
 
     //選択したカード

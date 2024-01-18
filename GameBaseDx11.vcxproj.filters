@@ -36,6 +36,9 @@
     <Filter Include="Player\Card\CardType">
       <UniqueIdentifier>{0ceada4c-1602-4c3f-b754-bbec2d3bb989}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Enemy">
+      <UniqueIdentifier>{0e99ab1b-8caa-45f7-8582-761f9990190a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\BoxCollider.cpp">
@@ -92,7 +95,7 @@
     <ClCompile Include="Engine\Transform.cpp">
       <Filter>01Engine\GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="TestScene.cpp" />
+    <ClCompile Include="PlayScene.cpp" />
     <ClCompile Include="Engine\Audio.cpp">
       <Filter>01Engine\ResourceManager</Filter>
     </ClCompile>
@@ -117,11 +120,14 @@
     <ClCompile Include="Player\Card\Card.cpp">
       <Filter>Player\Card</Filter>
     </ClCompile>
-    <ClCompile Include="Player\Card\CardType\AttackCard.cpp">
+    <ClCompile Include="Player\Card\CardType\Attack.cpp">
       <Filter>Player\Card\CardType</Filter>
     </ClCompile>
-    <ClCompile Include="Defense.cpp">
+    <ClCompile Include="Player\Card\CardType\Defense.cpp">
       <Filter>Player\Card\CardType</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy\Enemy.cpp">
+      <Filter>Enemy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -179,7 +185,7 @@
     <ClInclude Include="Engine\Transform.h">
       <Filter>01Engine\GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="TestScene.h" />
+    <ClInclude Include="PlayScene.h" />
     <ClInclude Include="Engine\Audio.h">
       <Filter>01Engine\ResourceManager</Filter>
     </ClInclude>
@@ -204,11 +210,14 @@
     <ClInclude Include="Player\Card\Card.h">
       <Filter>Player\Card</Filter>
     </ClInclude>
-    <ClInclude Include="Player\Card\CardType\AttackCard.h">
+    <ClInclude Include="Player\Card\CardType\Attack.h">
       <Filter>Player\Card\CardType</Filter>
     </ClInclude>
     <ClInclude Include="Player\Card\CardType\Defense.h">
       <Filter>Player\Card\CardType</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy\Enemy.h">
+      <Filter>Enemy</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

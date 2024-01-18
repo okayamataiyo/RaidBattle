@@ -125,7 +125,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Defense.cpp" />
+    <ClCompile Include="Enemy\Enemy.cpp" />
     <ClCompile Include="Engine\Audio.cpp" />
     <ClCompile Include="Engine\BillBoard.cpp" />
     <ClCompile Include="Engine\BoxCollider.cpp" />
@@ -150,12 +150,14 @@
     <ClCompile Include="Engine\Texture.cpp" />
     <ClCompile Include="Engine\Transform.cpp" />
     <ClCompile Include="Player\Card\Card.cpp" />
-    <ClCompile Include="Player\Card\CardType\AttackCard.cpp" />
+    <ClCompile Include="Player\Card\CardType\Attack.cpp" />
+    <ClCompile Include="Player\Card\CardType\Defense.cpp" />
     <ClCompile Include="Player\Job\Job.cpp" />
     <ClCompile Include="Player\Player.cpp" />
-    <ClCompile Include="TestScene.cpp" />
+    <ClCompile Include="PlayScene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Enemy\Enemy.h" />
     <ClInclude Include="Engine\Audio.h" />
     <ClInclude Include="Engine\BillBoard.h" />
     <ClInclude Include="Engine\BoxCollider.h" />
@@ -180,11 +182,11 @@
     <ClInclude Include="Engine\Texture.h" />
     <ClInclude Include="Engine\Transform.h" />
     <ClInclude Include="Player\Card\Card.h" />
-    <ClInclude Include="Player\Card\CardType\AttackCard.h" />
+    <ClInclude Include="Player\Card\CardType\Attack.h" />
     <ClInclude Include="Player\Card\CardType\Defense.h" />
     <ClInclude Include="Player\Job\Job.h" />
     <ClInclude Include="Player\Player.h" />
-    <ClInclude Include="TestScene.h" />
+    <ClInclude Include="PlayScene.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\BillBoard.hlsl">

@@ -1,13 +1,15 @@
 #include "Card.h"
 #include "../../Engine/Texture.h"
+#include "../../Engine/Model.h"
+#include "../../Engine/Global.h"
 
 //コンストラクタ
-Card::Card(std::string name, int power, std::string texturePath)
+Card::Card(GameObject* parent)
+	:GameObject(parent, "Card"),hModel_(-1)
 {
-	texture_ = new Texture;
-	cardName_ = name;
-	attackPower_ = power;
-	texture_->Load(texturePath);
+	//pTexture_ = new Texture;
+	attackPower_ = 10;
+	//texture_->Load(texturePath);
 
 }
 
@@ -19,4 +21,21 @@ Card::~Card()
 //初期化
 void Card::Initialize()
 {
+	hModel_ = Model::Load("PlayerFbx/Card.fbx");
+	assert(hModel_ <= 0);
+}
+
+void Card::Update()
+{
+}
+
+void Card::Draw()
+{
+	Model::SetTransform(hModel_, transform_);
+	Model::Draw(hModel_);
+}
+
+void Card::Release()
+{
+	SAFE_DELETE(pTexture_);
 }

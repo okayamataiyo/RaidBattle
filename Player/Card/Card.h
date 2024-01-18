@@ -5,31 +5,66 @@ struct CardStatus {
     
 };
 
+enum CardType {
+    ATTACK,
+    DEFENSE,
+    NUM
+};
+
 class Texture;
 
 /// <summary>
 /// プレイヤーが使うカードを管理する基底クラス
 /// </summary>
-class Card
+class Card : public GameObject
 {
+    //カードのモデル
+    int hModel_;
+
+    //カードの識別番号的な
+    int cardID_;
+
 protected:
 
+    //攻撃力
+    int attackPower_;
+
+    //カードのタイプ
+    CardType type_;
+
+    //カードのテクスチャ
+    Texture* pTexture_;
 
 public:
     //コンストラクタ
-    Card(std::string name,int power, std::string texturePath);
+    Card(GameObject* parent);
 
     //デストラクタ
     ~Card();
 
     //初期化
-    void Initialize();
+    virtual void Initialize() override;
+
+    //初期化
+    virtual void Update() override;
+
+    //初期化
+    virtual void Draw() override;
+
+    //初期化
+    virtual void Release() override;
+
+
+    ///////////アクセス関数//////////
+
+    void SetCardType(CardType type) { type_ = type; }
+    void SetCardID(int ID) { cardID_ = ID; }
 
 private:
 
-    char cardName_[64];
-    int attackPower_;
-    Texture* texture_;
+
+
+    
 
 
 };
