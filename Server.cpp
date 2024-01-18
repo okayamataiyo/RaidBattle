@@ -47,7 +47,6 @@ bool Server::ServerCom()
 	}
 
 	// 通信用ソケット ( クライアントのソケットとこのソケット間にコネクションが確立 )
-	int sock;
 	struct sockaddr_in	 clientAddr;
 	int addrlen = sizeof(clientAddr);
 	sock = accept(listenSock, (struct sockaddr*)&clientAddr, &addrlen);
@@ -67,9 +66,6 @@ bool Server::ServerCom()
 	{
 		struct TestStruct value;
 		Recv(sock, &value);
-		cout << "Name:" << value.name << endl;
-		cout << "Pos;(" << value.x << "," << value.y << ")" << endl;
-		cout << "hp:" << value.hp << endl;
 	}
 
 	// 送受信ともに切断
@@ -108,8 +104,34 @@ bool Server::ServerCom()
 	}
 }
 
+bool Server::sendStruct(int sock, TestStruct test)
+{
+	struct TestStruct temp;
+	temp.hp = htonl(test.hp);
+	temp.hp = htonl(test.x);
+	temp.hp = htonl(test.y);
+	int ret = send(sock, (char*)&test, sizeof(test), 0);
+	if (ret != sizeof(test))
+	{
+		return false;
+	}
+	return true;
+}
+
 template<class T>
-inline bool Server::Send(int sock, const T& value)
+inline bool Server::SendT(int sock, const T& value)
+{
+	send(sock,value,sizeof(value),0)
+	if (ret != sizeof(sendValue))
+	{
+		return false;
+	}
+	return true;
+}
+
+template<class T>
+inline bool Server::RecvT(int sock, const T& value)
 {
 
 }
+

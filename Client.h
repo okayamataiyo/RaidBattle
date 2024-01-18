@@ -17,6 +17,8 @@ class Client :
     public Socket
 {
 private:
+    int sock;
+    int ret;
 
     struct TestStruct {
         string name;
@@ -28,9 +30,6 @@ private:
 public:
     bool ClientCom();
 
-    template<class T>T* Send(int sock, const T& value){
-        send;
-        return;
-    }
+    bool sendStruct(int sock, struct TestStruct test);
 };
 

@@ -30,7 +30,11 @@ private:
 public:
     bool ServerCom();
 
-    template<class T>bool Send(int sock, const T& value);
+    template<class T>bool SendT(int sock, const T& value);
+
+    template<class T>bool RecvT(int sock, const T& value);
+
+    bool sendStruct(int sock, struct TestStruct test);
 
 
 

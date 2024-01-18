@@ -3,101 +3,120 @@
 bool Client::ClientCom()
 {
     #ifdef _DEBUG
-    OutputDebugString("Server");
+    OutputDebugString("Client");
     #endif // _DEBUG
-
+    
     //WinSock初期化
     WSADATA wsaData;
-    int ret = WSAStartup(MAKEWORD(2, 2), &wsaData);
+    ret = WSAStartup(MAKEWORD(2, 2), &wsaData);
     if (ret != 0)
     {
-        cout << "Error: WSAStartup ( ErrorCode:" << ret << " )" << endl;
-        return 1;	//おーわり！
-    }
-    cout << "Success: WSAStartup" << endl;
-
-    //ソケットの作成
-    int sock;
-    sock = socket(AF_INET, SOCK_STREAM, 0);/*TCPソケットの作成 */
-
-    if (sock < 0)//ソケットの作成に失敗したら )
-    {
-        //エラー処理して終わり
-        cout << "Error: Socket(ErrorCode: " << WSAGetLastError() << ")" << endl;
-        return -1;
-    }
-
-    cout << "Success: socket()" << endl;
-
-    if (ret == SOCKET_ERROR)
-    {
-        //エラー処理
+        #ifdef _DEBUG
+        OutputDebugString("Error: WSAStartup( ErrorCode:" + ret + ')' + '\n');
+        #endif //_DEBUG
         return 1;
     }
-    cout << "Success: ioctsocket()" << endl;
 
-    //sockをノンブロッキングモードにする
-    unsigned long cmdarg = 0x01;
-    ret = ioctlsocket(sock, FIONBIO, &cmdarg);
+    //ソケットの作成
+    int listenSock;
+    listenSock = socket(AF_INET, SOCK_STREAM, 0);/*TCPソケットの作成 */
 
-    /*
-        サーバのIPアドレスを入力
-        サーバのソケットアドレス情報をセット
-    */
-    struct sockaddr_in serverAddr;
-    memset(&serverAddr, 0, sizeof(serverAddr));
-    serverAddr.sin_family = AF_INET;
-    serverAddr.sin_port = htons(SERVERPORT);
-    inet_pton(AF_INET, "127.0.0.1", &serverAddr.sin_addr.s_addr);   //ほんとはよくない。せめて127.0.0.1を定数化
-
-    if (connect(sock, (struct sockaddr*)&serverAddr, sizeof(serverAddr)) != 0)
+    if (listenSock < 0)//ソケットの作成に失敗したら )
     {
-
+        #ifdef _DEBUG
+        OutputDebugString("Error: WSAStartup( ErrorCode:" + listenSock + ')' + '\n');
+        #endif  //_DEBUG
     }
-    cout << "Success: connect()" << endl;
-    /*
-        接続要求
-        コネクション確立
-    */
 
+    struct sockaddr_in bindAddr;
+    memset(&bindAddr, 0, sizeof(bindAddr));
+    bindAddr.sin_family = AF_INET;
+	bindAddr.sin_port = htons(SERVERPORT);
+	bindAddr.sin_addr.s_addr = htonl(INADDR_ANY);
+
+    if(bind(listenSock,(struct sockaddr*)&bindAddr, sizeof(bindAddr)) != 0){
+        #ifdef _DEBUG
+		OutputDebugString("Error: Bind ( ErrorCode:" + ret + ')' + '\n');
+        #endif // _DEBUG
+    }
+
+	if (listen(listenSock, 1) != 0) {
+        #ifdef _DEBUG
+		OutputDebugString("Error: listen ( ErrorCode:" + ret + ')' + '\n');
+        #endif // _DEBUG
+	}
+
+    //通信用ソケット(サーバーのソケットと、このソケット間にコネクションが確率)
+	struct sockaddr_in serverAddr;
+    int addrlen = sizeof(serverAddr);
+    sock = accept(listenSock, (struct sockAddr*)&serverAddr, &addrlen);
+
+    if(sock < 0){
+        #ifdef _DEBUG
+		OutputDebugString("Error: accept ( ErrorCode:" + sock + ')' + '\n');
+        #endif // _DEBUG
+    }
+    /*
+    接続要求受付
+    コネクション確立
+    コネクション確立済みソケットの作成
+    */
     while (true)
     {
-        /*
-        メッセージ入力
-        サーバへの文字列送信
-        */
-        cout << "Input message:";
-        cin >> buff;
-        ret = send(sock, buff, strlen(buff), 0);
-        if (ret != strlen(buff))
-        {
-
-        }
-
-        /*
-            サーバから文字列受信
-            出力
-        */
-        ret = recv(sock, buff, sizeof(buff) - 1, 0);
-        if (ret < 0)
-        {
-            //エラーコードがWSAEWOULDBLOCKの場合は、受信データがなかったってこと
-            if (WSAGetLastError() == WSAEWOULDBLOCK)
-            {
-                cout << "受信データなし" << endl;
-            }
-            else
-            {
-                //エラーコードを出力
-                cout << "Error: recv(ErrorCode: " << WSAGetLastError() << ")" << endl;
-                break;
-            }
-            //エラーコードを出力
-            cout << "Error: recv(ErrorCode: " << WSAGetLastError() << ")" << endl;
-            break;
-        }
-        //終端記号の追加
-        buff[ret] = '\0';
-        cout << buff << endl;
+        struct TestStruct value;
+        Recv(sock, &value);
     }
+
+	// 送受信ともに切断
+	// shutdown(sock, 0x02);
+	if (shutdown(sock, SD_BOTH) != 0)
+	{
+		// エラーコードを出力
+        #ifdef _DEBUG
+		OutputDebugString("Error: shutdown( ErrorCode: " + WSAGetLastError() + ')' + '\n');
+        #endif // _DEBUG
+	}
+
+	// ソケットの破棄
+	if (closesocket(sock) != 0)
+	{
+		// エラーコードを出力
+        #ifdef _DEBUG
+   		OutputDebugString("Error: closesocket( ErrorCode: " + WSAGetLastError() + ')' + '\n');
+        #endif // _DEBUG
+	}
+
+	if (closesocket(listenSock) != 0)
+	{
+		// エラーコードを出力
+        #ifdef _DEBUG
+		OutputDebugString("Error: closesocket( ErrorCode: " + WSAGetLastError() + ')' + '\n');
+        #endif // _DEBUG	
+	}
+
+	// WinSock終了処理
+	if (WSACleanup() != 0)
+	{
+        #ifdef _DEBUG
+		OutputDebugString("Error: WSACleanup( ErrorCode: " + WSAGetLastError() + ')' + '\n');
+        #endif // _DEBUG
+	}
 }
+
+bool Client::sendStruct(int sock, TestStruct test)
+{
+	struct TestStruct temp;
+	temp.hp = htonl(test.hp);
+	temp.hp = htonl(test.x);
+	temp.hp = htonl(test.y);
+	int ret = send(sock, (char*)&test, sizeof(test), 0);
+	if (ret != sizeof(test))
+	{
+		return false;
+	}
+	return true;
+}
+
+//クライアント側がサーバに接続する
+//手入力でＩＰを入力する必要がある？
+//ゲーム内で打つ？ダイアログ出してそこに打ち込む？
