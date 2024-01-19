@@ -2,6 +2,7 @@
 #include "../Engine/GameObject.h"
 #include "Job/Job.h"
 #include "Card/Card.h"
+#include "../AI/MetaAI.h"
 #include <vector>
 #include <list>
 
@@ -11,10 +12,13 @@ struct Status {
     int x;
     int y;
     int hp;
+    int baseAttackPower;
     float speed;
     bool isDead;
 
 };
+
+class MetaAI;
 
 /// <summary>
 /// プレイヤーを管理するクラス
@@ -47,12 +51,12 @@ public:
     /// <summary>
     /// カードを選択する
     /// </summary>
-    void SelectCard();
+    void SelectCard(int ID);
 
     /// <summary>
     /// 攻撃をする
     /// </summary>
-    void SendAttack();
+    void SendAttack(int damage);
 
     /// <summary>
     /// ダメージを受けた
@@ -90,6 +94,8 @@ private:
     Card* selectedCard_;
 
     //カード一覧を入れておく？
-    std::list<Card*> cardList_;
+    std::vector<Card*> cardList_;
+
+    MetaAI* metaAI_;
 
 };

@@ -39,6 +39,9 @@
     <Filter Include="Enemy">
       <UniqueIdentifier>{0e99ab1b-8caa-45f7-8582-761f9990190a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="AI">
+      <UniqueIdentifier>{d64ae818-8eb9-4730-9a8d-dbbd69f24696}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\BoxCollider.cpp">
@@ -129,6 +132,18 @@
     <ClCompile Include="Enemy\Enemy.cpp">
       <Filter>Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="AI\MetaAI.cpp">
+      <Filter>AI</Filter>
+    </ClCompile>
+    <ClCompile Include="AI\AI.cpp">
+      <Filter>AI</Filter>
+    </ClCompile>
+    <ClCompile Include="AI\CharacterAI.cpp">
+      <Filter>AI</Filter>
+    </ClCompile>
+    <ClCompile Include="AI\NavigationAI.cpp">
+      <Filter>AI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -218,6 +233,18 @@
     </ClInclude>
     <ClInclude Include="Enemy\Enemy.h">
       <Filter>Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\MetaAI.h">
+      <Filter>AI</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\AI.h">
+      <Filter>AI</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\CharacterAI.h">
+      <Filter>AI</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\NavigationAI.h">
+      <Filter>AI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -59,6 +59,10 @@ public:
 
     void SetCardType(CardType type) { type_ = type; }
     void SetCardID(int ID) { cardID_ = ID; }
+    void SetAttackPower(int attack) { attackPower_ = attack; }
+    CardType GetCardType() { return type_; }
+    int GetCardID() { return cardID_; }
+    int GetAttackPower() { return attackPower_; }
 
 private:
 
