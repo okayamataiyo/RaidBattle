@@ -121,7 +121,10 @@ bool Server::sendStruct(int sock, TestStruct test)
 template<class T>
 inline bool Server::SendT(int sock, const T& value)
 {
-	send(sock,value,sizeof(value),0)
+	T sendValue = htonl(value);
+
+	int ret = send(sock, dynamic_cast<const char*>(&sendValue), sizeof(sendValue), 0);
+
 	if (ret != sizeof(sendValue))
 	{
 		return false;
@@ -132,6 +135,15 @@ inline bool Server::SendT(int sock, const T& value)
 template<class T>
 inline bool Server::RecvT(int sock, const T& value)
 {
+	T recvValue;
 
-}
+	int ret = recv(sock, dynamic_cast<const char*>(&recvValue), sizeof(recvValue), 0);
+
+	if (ret != sizeof(recvValue))
+	{
+		return false;
+	}
+	return true;
+	
+}	
 

@@ -19,6 +19,10 @@ class Client :
 private:
     int sock;
     int ret;
+	STARTUPINFO si{};
+	PROCESS_INFORMATION pi{};
+
+	si.cb = sizeof(si);
 
     struct TestStruct {
         string name;
@@ -30,6 +34,35 @@ private:
 public:
     bool ClientCom();
 
+	/// <summary>
+	/// 構造体データをサーバーに送信
+	/// </summary>
     bool sendStruct(int sock, struct TestStruct test);
+
+	/// <summary>
+	/// ゲームを起動
+	/// </summary>
+	void GameStandup() { CreateProcess(L"Server.exe", nullptr, nullptr, nullptr, false, 0, nullptr, nullptr, &si, &pi); }
+
+	/// <summary>
+	/// 画面表示
+	/// </summary>
+    void Draw();
+
+	/// <summary>
+	/// ダイアログ表示
+	/// </summary>
+    void DrawDialog();
+
+	/// <summary>
+	/// サーバーのIPを入力
+	/// </summary>
+    void SearchServer();
+
+	/// <summary>
+	/// サーバーに接続
+	/// </summary>|
+	void ServerIn();
+
 };
 

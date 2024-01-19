@@ -117,6 +117,28 @@ bool Client::sendStruct(int sock, TestStruct test)
 	return true;
 }
 
+void Client::Draw()
+{
+
+}
+
+void Client::DrawDialog()
+{
+
+}
+
+void Client::SearchServer()
+{
+
+}
+
+void Client::ServerIn()
+{
+
+}
+
+
+
 //クライアント側がサーバに接続する
 //手入力でＩＰを入力する必要がある？
 //ゲーム内で打つ？ダイアログ出してそこに打ち込む？
