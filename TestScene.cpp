@@ -1,5 +1,6 @@
 #include "TestScene.h"
 #include "Player.h"
+#include "Ore.h"
 
 //コンストラクタ
 TestScene::TestScene(GameObject * parent)
@@ -12,12 +13,12 @@ void TestScene::Initialize()
 {
 	//Playerのインスタンスを生成＆初期化
 	pPlayer_ = Instantiate<Player>(this);
+	Instantiate<Ore>(this);
 }
 
 //更新
 void TestScene::Update()
 {
-	
 }
 
 //描画

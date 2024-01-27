@@ -1,23 +1,14 @@
 #pragma once
 #include "Engine/GameObject.h"
 
-class Player : public GameObject
+class Ore : public GameObject
 {
-	int hModel_;
-	int hPoint_;
+	int hCircle_;
 public:
-	Player(GameObject* parent);
-
-	//‰Šú‰»
+	Ore(GameObject* _pParent):GameObject(_pParent,"Ore") {}
 	void Initialize() override;
-
-	//XV
 	void Update() override;
-
-	//•`‰æ
 	void Draw() override;
-
-	//ŠJ•ú
 	void Release() override;
 };
 
