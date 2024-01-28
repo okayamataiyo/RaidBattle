@@ -17,10 +17,17 @@ void Player::Initialize()
 
 	hPoint_ = Model::Load("DebugCollision/Point.fbx");
 	assert(hPoint_ >= 0);
+
+	hCircle_ = Model::Load("DebugCollision/CircleCollider.fbx");
+	assert(hCircle_ >= 0);
+
 }
 
 void Player::Update()
 {
+
+	circle_.center_ = { transform_.position_.x, transform_.position_.z };
+	circle_.radius_ = 1.f;
 
 	if (Input::IsKey(DIK_W))transform_.position_.z += 0.1f;
 	if (Input::IsKey(DIK_A))transform_.position_.x -= 0.1f;
@@ -43,6 +50,11 @@ void Player::Draw()
 	pT.position_.y -= 0.5f;
 	Model::SetTransform(hPoint_, pT);
 	Model::Draw(hPoint_);
+
+	Transform cT = transform_;
+	cT.position_.y -= 0.5f;
+	Model::SetTransform(hCircle_, cT);
+	Model::Draw(hCircle_);
 }
 
 void Player::Release()

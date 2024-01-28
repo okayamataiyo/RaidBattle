@@ -104,6 +104,7 @@
     <ClCompile Include="Engine\ImGui\imgui_widgets.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Ore.cpp" />
+    <ClCompile Include="Circle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -186,6 +187,7 @@
     <ClInclude Include="Engine\ImGui\imstb_truetype.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Ore.h" />
+    <ClInclude Include="Circle.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\Simple2D.hlsl">
