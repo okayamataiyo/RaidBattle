@@ -105,6 +105,9 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Ore.cpp" />
     <ClCompile Include="Circle.cpp" />
+    <ClCompile Include="TestScene2.cpp" />
+    <ClCompile Include="Point.cpp" />
+    <ClCompile Include="Arc.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -188,6 +191,9 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="Ore.h" />
     <ClInclude Include="Circle.h" />
+    <ClInclude Include="TestScene2.h" />
+    <ClInclude Include="Point.h" />
+    <ClInclude Include="Arc.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\Simple2D.hlsl">

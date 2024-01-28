@@ -51,10 +51,10 @@ void Player::Draw()
 	Model::SetTransform(hPoint_, pT);
 	Model::Draw(hPoint_);
 
-	Transform cT = transform_;
+	/*Transform cT = transform_;
 	cT.position_.y -= 0.5f;
 	Model::SetTransform(hCircle_, cT);
-	Model::Draw(hCircle_);
+	Model::Draw(hCircle_);*/
 }
 
 void Player::Release()

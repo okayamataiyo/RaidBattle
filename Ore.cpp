@@ -20,7 +20,7 @@ void Ore::Update()
 	Player* pP = (Player*)FindObject("Player");
 
 	std::string res;
-	if (circle_.OverlapCircle(pP->GetCircle())) {
+	if (circle_.ContainsPoint(XMFLOAT2(pP->GetPosition().x, pP->GetPosition().z))) {
 		ImGui::Text("OverlapCircle = true");
 	}
 	else
